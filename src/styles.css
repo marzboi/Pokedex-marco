@@ -162,5 +162,9 @@ body {
 #app header img {
   margin: 20;
 }
+#app main {
+  display: flex;
+  flex-direction: row;
+}
 
 /*# sourceMappingURL=styles.css.map */
