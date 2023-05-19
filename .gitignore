@@ -23,3 +23,5 @@ coverage
 *.njsproj
 *.sln
 *.sw?
+test.html
+styles.css.map

@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "sass": "sass sass/styles.scss:src/styles.css -w",
     "start": "json-server --watch pokemon.json",
     "test": "jest --watchAll --coverage",
     "test:prod": "jest --watchAll --coverage --watchAll=false",
@@ -28,6 +29,7 @@
     "jest": "^29.5.0",
     "jest-environment-jsdom": "^29.5.0",
     "jest-ts-webcompat-resolver": "^1.0.0",
+    "sass": "^1.62.1",
     "ts-jest": "^29.1.0",
     "typescript": "^5.0.4",
     "vite": "^4.3.2"
