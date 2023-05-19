@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "start": "json-server --watch pokemon.json",
     "test": "jest --watchAll --coverage",
     "test:prod": "jest --watchAll --coverage --watchAll=false",
     "dev": "vite",
@@ -33,5 +34,8 @@
   },
   "prettier": {
     "singleQuote": true
+  },
+  "dependencies": {
+    "json-server": "^0.17.3"
   }
 }
