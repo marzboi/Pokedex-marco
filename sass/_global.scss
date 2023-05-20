@@ -8,4 +8,12 @@ body {
     Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   min-width: 375px;
   font-family: 'Press Start 2P', cursive;
+  background: rgb(2, 0, 36);
+  background: radial-gradient(
+    circle,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(227, 155, 211, 1) 0%,
+    rgba(247, 249, 254, 1) 44%,
+    rgba(0, 212, 255, 1) 100%
+  );
 }
