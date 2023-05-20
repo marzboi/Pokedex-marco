@@ -161,10 +161,32 @@ body {
 }
 #app header img {
   margin: 20;
+  margin-bottom: 15px;
 }
-#app main {
+#app main h2 {
+  font-size: 30px;
+  margin-bottom: 15px;
+}
+#app main ul {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+#app main ul li {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  padding: 20px;
+  margin: 10px;
+  align-items: center;
+  border: solid black 2px;
+  border-radius: 10px;
+  justify-content: space-between;
+}
+#app main ul li span {
+  padding: 10px;
+}
+#app main ul li span a {
+  text-decoration: none;
+  color: black;
 }
 
 /*# sourceMappingURL=styles.css.map */
