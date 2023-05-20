@@ -1,11 +1,11 @@
 import { PokeAki } from '../data/pokemon-api';
-import { Pokemon } from '../models/pokemon';
+import { PokemonInfo } from '../models/pokemon';
 import { Component } from './component';
 
 // TEMP import './tasks.list.css';
 
 export class PokemonList extends Component {
-  pokemons: Pokemon[];
+  pokemons: PokemonInfo[];
   pokeRepo: PokeAki;
   constructor(selector: string) {
     super(selector);
@@ -18,27 +18,35 @@ export class PokemonList extends Component {
     super.cleanHtml();
     this.template = this.createTemplate();
     super.render();
+    this.element
+      .querySelectorAll('span')
+      .forEach((item) =>
+        item.addEventListener('click', this.handleGetOne.bind(this))
+      );
   }
-
-  async handleChange() {}
-  async handleDelete() {}
 
   async handleLoad() {
     this.pokemons = await this.pokeRepo.getAll();
     this.render();
   }
 
+  async handleGetOne(event: Event) {
+    const element = event.target;
+    const url = element.dataset.id as string;
+    this.pokeRepo.getPokemon(url);
+  }
+
   createTemplate() {
-    const imgUrl = '';
+    console.log(this.pokemons);
     const balls = this.pokemons.results
       .map(
         (item) => `
     <li>
-      <span>${item.name}</span>
+      <p>${item.name}</p>
       <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${
         item.url.split('/')[6]
       }.gif" heigh=100 width=100>
-      <span><a href="${item.url}">Combat Info</a></span>
+      <span data-id="${item.url}">Combat Info</span>
     </li>`
       )
       .join('');

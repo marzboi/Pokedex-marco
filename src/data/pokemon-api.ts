@@ -1,10 +1,10 @@
-import { Pokemon } from '../models/pokemon';
+import { Pokemon, PokemonInfo } from '../models/pokemon';
 
 export class PokeAki {
   pokeUrl: string;
   repoUrl: string;
   constructor() {
-    this.pokeUrl = 'https://pokeapi.co/api/v2/pokemon?limit=20&offset=0';
+    this.pokeUrl = 'https://pokeapi.co/api/v2/pokemon?limit=150&offset=0';
     this.repoUrl = 'http://localhost:3000/pokemon';
   }
 
@@ -13,33 +13,9 @@ export class PokeAki {
     return response.json();
   }
 
-  async get(id: Pokemon['id']) {
-    const response = await fetch(this.pokeUrl + id);
+  async getPokemon(url: PokemonInfo['url']) {
+    const response = await fetch(url);
+    console.log(response);
     return response.json();
-  }
-
-  async create(pokemon: Partial<Pokemon>) {
-    const response = await fetch(this.repoUrl, {
-      method: 'POST',
-      body: JSON.stringify(pokemon),
-      headers: { 'Content-Type': 'application/json' },
-    });
-    return response.json();
-  }
-
-  async update(id: Pokemon['id'], pokemon: Partial<Pokemon>) {
-    const response = await fetch(this.repoUrl + id, {
-      method: 'PATCH',
-      body: JSON.stringify(pokemon),
-      headers: { 'Content-Type': 'application/json' },
-    });
-    return response.json();
-  }
-
-  async delete(id: Pokemon['id']) {
-    const response = await fetch(this.repoUrl + id, {
-      method: 'DELETE',
-    });
-    return response.ok;
   }
 }
