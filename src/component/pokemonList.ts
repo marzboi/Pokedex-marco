@@ -1,28 +1,22 @@
-import { PokeAki } from '../data/pokemon-api';
-import { PokemonInfo } from '../models/pokemon';
+import { PokeApi } from '../data/pokemon-api';
+import { Pokemon, PokemonInfo } from '../models/pokemon';
 import { Component } from './component';
-
-// TEMP import './tasks.list.css';
 
 export class PokemonList extends Component {
   pokemons: PokemonInfo[];
-  pokeRepo: PokeAki;
+  pokeRepo: PokeApi;
+
   constructor(selector: string) {
     super(selector);
     this.pokemons = [];
-    this.pokeRepo = new PokeAki();
+    this.pokeRepo = new PokeApi();
     this.handleLoad();
   }
 
-  render(): void {
+  async render(): Promise<void> {
     super.cleanHtml();
-    this.template = this.createTemplate();
+    this.template = await this.createTemplate();
     super.render();
-    this.element
-      .querySelectorAll('span')
-      .forEach((item) =>
-        item.addEventListener('click', this.handleGetOne.bind(this))
-      );
   }
 
   async handleLoad() {
@@ -30,29 +24,37 @@ export class PokemonList extends Component {
     this.render();
   }
 
-  async handleGetOne(event: Event) {
-    const element = event.target;
-    const url = element.dataset.id as string;
-    this.pokeRepo.getPokemon(url);
+  async handleGetOnePokemonInfo(url: string) {
+    return this.pokeRepo.getPokemon(url);
   }
 
-  createTemplate() {
-    console.log(this.pokemons);
-    const balls = this.pokemons.results
+  async createTemplate() {
+    const promiseArray: Promise<Pokemon>[] = [];
+
+    this.pokemons.forEach((element) => {
+      promiseArray.push(this.handleGetOnePokemonInfo(element.url));
+    });
+
+    const pokemonInformation = await Promise.all(promiseArray);
+
+    const pokeList = pokemonInformation
       .map(
-        (item) => `
-    <li>
-      <p>${item.name}</p>
-      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${
-        item.url.split('/')[6]
-      }.gif" heigh=100 width=100>
-      <span data-id="${item.url}">Combat Info</span>
-    </li>`
+        (item) =>
+          `
+          <li>
+            <p>${item.name}</p>
+            <img src="${item.imgUrl}" width="170" height="150">
+            <span>Combat Info</span>
+          </li>
+          `
       )
       .join('');
 
     return `
-    <h2>Pokedex</h2>
-    <section class="pokemon-list"><ul>${balls}</ul></section>`;
+      <h2>Pokedex</h2>
+      <section class="pokemon-list">
+        <ul>${pokeList}</ul>
+      </section>
+    `;
   }
 }
