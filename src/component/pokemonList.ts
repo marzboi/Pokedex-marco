@@ -31,11 +31,32 @@ export class PokemonList extends Component {
   }
 
   async handleGetOne(event: Event) {
-    const element = event.target;
+    const element = event.target as HTMLSpanElement;
+    if (!element) return;
+
     const url = element.dataset.id;
-    const one = await this.pokeRepo.getPokemon(url);
-    console.log(one);
+
+    if (!url) return;
+    const pokemon = await this.pokeRepo.getPokemon(url);
+    console.log(pokemon);
   }
 
-  createTemplate() {}
+  createTemplate() {
+    const pokemons = this.pokemons
+      .map(
+        (item) => `
+        <li>
+          <p>${item.name}</p>
+          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${
+            item.url.split('/')[6]
+          }.gif" width="170" height="150">
+          <span data-id="${item.url}">Combat Info</span>
+        </li>`
+      )
+      .join('');
+
+    return `
+    <h2>Pokedex</h2>
+    <section class="pokemon-list"><ul>${pokemons}}</ul></section>`;
+  }
 }

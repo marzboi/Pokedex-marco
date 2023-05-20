@@ -16,6 +16,14 @@ export class PokeApi {
 
   async getPokemon(url: PokemonInfo['url']) {
     const response = await fetch(url);
-    return response.json();
+    const search = await response.json();
+    console.log(search);
+    const pokemon: Pokemon = {
+      id: search.id,
+      name: search.name,
+      imgUrl: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${search.id}.gif`,
+      size: { weight: search.weight, height: search.height },
+    };
+    return pokemon;
   }
 }
