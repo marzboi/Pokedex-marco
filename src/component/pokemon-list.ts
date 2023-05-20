@@ -5,12 +5,16 @@ import { Component } from './component';
 export class PokemonList extends Component {
   pokemons: PokemonInfo[];
   pokeRepo: PokeApi;
+  itemsPerPage: number;
+  offset: number;
 
   constructor(selector: string) {
     super(selector);
     this.pokemons = [];
     this.pokeRepo = new PokeApi();
-    this.handleLoad();
+    this.itemsPerPage = 20;
+    this.offset = 0;
+    this.handleLoad(this.itemsPerPage, this.offset);
   }
 
   async render(): Promise<void> {
@@ -28,8 +32,12 @@ export class PokemonList extends Component {
     console.log(true);
   }
 
-  async handleLoad() {
-    this.pokemons = await this.pokeRepo.getAll();
+  async handleDisplayPokemon(selectedValue: string) {
+    console.log('Selected value:', selectedValue);
+  }
+
+  async handleLoad(limit: number, offset: number) {
+    this.pokemons = await this.pokeRepo.getAll(limit, offset);
     this.render();
   }
 
@@ -60,6 +68,19 @@ export class PokemonList extends Component {
       .join('');
 
     return `
+      <section>
+        <ul></ul>
+        <div>
+          <label for="poke-items">Pokemons per page
+            <select name="poke" id="poke-items">
+              <option value="20">20</option>
+              <option value="50">50</option>
+              <option value="100">100</option>
+              <option value="150">150</option>
+            </select>
+          </label>
+        </div>
+      </section>
       <h2>Pokedex</h2>
       <section class="pokemon-list">
         <ul>${pokeList}</ul>

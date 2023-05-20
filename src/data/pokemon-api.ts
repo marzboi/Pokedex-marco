@@ -4,12 +4,12 @@ export class PokeApi {
   pokeUrl: string;
   repoUrl: string;
   constructor() {
-    this.pokeUrl = 'https://pokeapi.co/api/v2/pokemon?limit=20&offset=';
+    this.pokeUrl = 'https://pokeapi.co/api/v2/pokemon?limit=';
     this.repoUrl = 'http://localhost:3000/pokemon';
   }
 
-  async getAll(offset: number = 0) {
-    const response = await fetch(this.pokeUrl + offset);
+  async getAll(limit: number = 20, offset: number = 0) {
+    const response = await fetch(this.pokeUrl + limit + '&offset=' + offset);
     const pokemonList = await response.json();
     return pokemonList.results;
   }
@@ -31,7 +31,7 @@ export class PokeApi {
         speed: search.stats[5].base_stat,
       },
     };
-    console.log(pokemon);
+
     return pokemon;
   }
 }
