@@ -19,10 +19,15 @@
     }
     img {
       margin: 20;
+      margin-bottom: 15px;
     }
   }
 
   main {
+    h2 {
+      font-size: 30px;
+      margin-bottom: 15px;
+    }
     ul {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
@@ -33,10 +38,16 @@
         padding: 20px;
         margin: 10px;
         align-items: center;
-        border: solid black 1px;
+        border: solid black 2px;
+        border-radius: 10px;
+        justify-content: space-between;
 
         span {
           padding: 10px;
+          a {
+            text-decoration: none;
+            color: black;
+          }
         }
       }
     }

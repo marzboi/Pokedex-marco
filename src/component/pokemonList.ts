@@ -18,16 +18,6 @@ export class PokemonList extends Component {
     super.cleanHtml();
     this.template = this.createTemplate();
     super.render();
-    this.element
-      .querySelectorAll('i.button')
-      .forEach((item) =>
-        item.addEventListener('click', this.handleDelete.bind(this))
-      );
-    this.element
-      .querySelectorAll('input')
-      .forEach((item) =>
-        item.addEventListener('change', this.handleChange.bind(this))
-      );
   }
 
   async handleChange() {}
@@ -39,15 +29,16 @@ export class PokemonList extends Component {
   }
 
   createTemplate() {
+    const imgUrl = '';
     const balls = this.pokemons.results
       .map(
         (item) => `
     <li>
       <span>${item.name}</span>
-      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
+      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${
         item.url.split('/')[6]
-      }.png" heigh=120 width=120>
-      <span><a href="${item.url}">Details</a></span>
+      }.gif" heigh=100 width=100>
+      <span><a href="${item.url}">Combat Info</a></span>
     </li>`
       )
       .join('');

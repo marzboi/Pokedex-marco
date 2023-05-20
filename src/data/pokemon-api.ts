@@ -4,7 +4,7 @@ export class PokeAki {
   pokeUrl: string;
   repoUrl: string;
   constructor() {
-    this.pokeUrl = 'https://pokeapi.co/api/v2/pokemon?limit=10000';
+    this.pokeUrl = 'https://pokeapi.co/api/v2/pokemon?limit=20&offset=0';
     this.repoUrl = 'http://localhost:3000/pokemon';
   }
 
