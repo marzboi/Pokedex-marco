@@ -8,4 +8,12 @@ export type Pokemon = {
   name: string;
   imgUrl: string;
   size: { weight: number; height: number };
+  stats: {
+    hp: number;
+    attack: number;
+    defense: number;
+    specialA: number;
+    specialD: number;
+    speed: number;
+  };
 };

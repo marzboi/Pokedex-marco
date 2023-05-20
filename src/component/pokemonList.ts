@@ -17,6 +17,15 @@ export class PokemonList extends Component {
     super.cleanHtml();
     this.template = await this.createTemplate();
     super.render();
+    this.element
+      .querySelectorAll('img')
+      .forEach((item) =>
+        item.addEventListener('click', this.displayPokemon.bind(this))
+      );
+  }
+
+  async displayPokemon() {
+    console.log(true);
   }
 
   async handleLoad() {

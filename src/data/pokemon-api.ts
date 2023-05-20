@@ -22,6 +22,14 @@ export class PokeApi {
       name: search.name,
       imgUrl: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${search.id}.gif`,
       size: { weight: search.weight, height: search.height },
+      stats: {
+        hp: search.stats[0].base_stat,
+        attack: search.stats[1].base_stat,
+        defense: search.stats[2].base_stat,
+        specialA: search.stats[3].base_stat,
+        specialD: search.stats[4].base_stat,
+        speed: search.stats[5].base_stat,
+      },
     };
     return pokemon;
   }
