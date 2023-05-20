@@ -1,6 +1,4 @@
-export type Pokemon = {
-  id: number;
+export type PokemonInfo = {
   name: string;
-  image: string;
   url: string;
 };

@@ -162,9 +162,20 @@ body {
 #app header img {
   margin: 20;
 }
-#app main {
+#app main ul {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+#app main ul li {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  padding: 20px;
+  margin: 10px;
+  align-items: center;
+  border: solid black 1px;
+}
+#app main ul li span {
+  padding: 10px;
 }
 
 /*# sourceMappingURL=styles.css.map */
