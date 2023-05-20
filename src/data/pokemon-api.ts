@@ -17,7 +17,6 @@ export class PokeApi {
   async getPokemon(url: PokemonInfo['url']) {
     const response = await fetch(url);
     const search = await response.json();
-    console.log(search);
     const pokemon: Pokemon = {
       id: search.id,
       name: search.name,

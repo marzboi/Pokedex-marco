@@ -157,15 +157,14 @@ body {
 }
 #app header h2 {
   font-size: 1.5rem;
-  margin: 20px;
+  margin: 30px;
 }
 #app header img {
-  margin: 20;
-  margin-bottom: 15px;
+  margin: 50px;
 }
 #app main h2 {
   font-size: 30px;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
 }
 #app main ul {
   display: grid;
