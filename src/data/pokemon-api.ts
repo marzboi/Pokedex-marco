@@ -20,7 +20,7 @@ export class PokeApi {
     const pokemon: Pokemon = {
       id: search.id,
       name: search.name,
-      imgUrl: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${search.id}.gif`,
+      imgUrl: search.sprites.front_default,
       size: { weight: search.weight, height: search.height },
       stats: {
         hp: search.stats[0].base_stat,

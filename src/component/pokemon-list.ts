@@ -59,7 +59,7 @@ export class PokemonList extends Component {
   }
 
   async handleNextButton() {
-    if (this.offset >= 1281) this.offset = 1261;
+    if (this.offset >= 1281) this.offset = 1280;
     this.offset = this.itemsPerPage + this.offset;
     this.handleLoad();
   }
@@ -110,10 +110,13 @@ export class PokemonList extends Component {
           `
           <li>
             <p>${item.name.toUpperCase()}</p><span>Index # ${item.id}</span>
-            <img src="${
-              item.imgUrl
-            }" width="170" height="150" class="poke-info">
-            <span>Combat Info</span>
+            <img src="${item.imgUrl}" class="poke-info">
+            <span>Type I: ${item.type.mainType}</span>
+            <span>Type II: ${
+              item.type.secondaryType
+                ? item.type.secondaryType
+                : item.type.mainType
+            }</span>
             
           </li>
           `
