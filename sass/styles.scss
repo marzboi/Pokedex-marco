@@ -68,21 +68,23 @@
           flex-direction: column;
           margin: 10px;
           align-items: center;
-          border: solid black 2px;
           border-radius: 10px;
           justify-content: space-between;
+          background: url('https://cutewallpaper.org/21/pokemon-pokedex-background/pokemon-pokemon-pokedex-wallpaper-wallpapers-fondo.jpg');
 
           span {
-            padding: 40px;
+            padding: 10px;
           }
 
-          a {
-            text-decoration: none;
-            color: black;
+          img {
+            padding: 20px;
           }
 
           p {
-            padding: 40px;
+            margin: 25px;
+            border-radius: 15%;
+            padding: 5px;
+            background-color: white;
           }
         }
       }
