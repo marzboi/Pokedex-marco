@@ -99,14 +99,18 @@
             img {
               background-color: white;
               margin: 15px;
+              border-radius: 50%;
             }
+            border-radius: 15px;
+            font-weight: normal;
+            text-align: left;
             color: white;
             font-size: rem(17);
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: red;
+            background: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2fb2821a-1406-4a1d-9b04-6668f278e944/d8c8vec-f5fe878b-b71f-42d5-b392-80f813feb639.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzJmYjI4MjFhLTE0MDYtNGExZC05YjA0LTY2NjhmMjc4ZTk0NFwvZDhjOHZlYy1mNWZlODc4Yi1iNzFmLTQyZDUtYjM5Mi04MGY4MTNmZWI2MzkucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.iJZ_gcH8TU_Xv-X4ishMNchye76Sb4DbSz9kctTHksU');
             border: 5px solid black;
             padding: 20px;
             z-index: 1;
