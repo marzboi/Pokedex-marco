@@ -8,6 +8,7 @@ export class PokemonList extends Component {
   pokeRepo: PokeApi;
   itemsPerPage: number;
   offset: number;
+  pokemonArrayInfo!: object[];
 
   constructor(selector: string) {
     super(selector);
@@ -24,6 +25,7 @@ export class PokemonList extends Component {
   async render(): Promise<void> {
     super.cleanHtml();
     this.template = await this.createTemplate();
+    this.pokemonArrayInfo = await this.createPokemonInfo();
     super.render();
     document.querySelectorAll('.poke-info').forEach((item) => {
       item.addEventListener('click', () => console.log(true));
@@ -81,6 +83,16 @@ export class PokemonList extends Component {
 
   async handleGetOnePokemonInfo(url: string) {
     return this.pokeRepo.getPokemon(url);
+  }
+
+  async createPokemonInfo() {
+    const promiseArray: Promise<Pokemon>[] = [];
+
+    this.pokemons.forEach((element) => {
+      promiseArray.push(this.handleGetOnePokemonInfo(element.url));
+    });
+
+    return Promise.all(promiseArray);
   }
 
   async createTemplate() {

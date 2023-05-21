@@ -35,7 +35,6 @@ export class PokeApi {
         secondaryType: search.types[1]?.type?.name || null,
       },
     };
-    console.log(pokemon);
     return pokemon;
   }
 }
