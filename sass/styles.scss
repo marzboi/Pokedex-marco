@@ -93,6 +93,11 @@
           }
 
           .poke-details {
+            h2 {
+              margin-top: 10px;
+              font-size: rem(22);
+              text-align: center;
+            }
             i {
               font-size: 40px;
             }
@@ -100,6 +105,9 @@
               background-color: white;
               margin: 15px;
               border-radius: 50%;
+            }
+            div {
+              margin-top: 12px;
             }
             border-radius: 15px;
             font-weight: normal;
