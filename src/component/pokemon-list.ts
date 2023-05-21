@@ -45,6 +45,15 @@ export class PokemonList extends Component {
     document
       .querySelector('.prev')
       ?.addEventListener('click', this.handlePrevButton.bind(this));
+
+    document
+      .querySelector('.return')
+      ?.addEventListener('click', this.handleReturnButton.bind(this));
+  }
+
+  async handleReturnButton() {
+    this.offset = 0;
+    this.handleLoad();
   }
 
   async handleNextButton() {
