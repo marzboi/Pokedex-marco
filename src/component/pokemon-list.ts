@@ -146,6 +146,7 @@ export class PokemonList extends Component {
               <div>
                 <i class="fa-sharp fa-regular fa-circle-xmark"></i>
               </div>
+              <h2>${item.name.toUpperCase()}</h2>
                 <img src="${item.imgUrl}">
                 <div>
                   <span>Index: ${item.id}</span>
