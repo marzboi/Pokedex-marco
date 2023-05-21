@@ -152,6 +152,7 @@ body {
   align-items: center;
   text-align: center;
   margin: 30px;
+  font-weight: bold;
 }
 #app header h1 {
   font-size: 2rem;
@@ -219,6 +220,9 @@ body {
   border-radius: 15%;
   padding: 5px;
   background-color: white;
+}
+#app footer {
+  margin-top: 35px;
 }
 
 /*# sourceMappingURL=styles.css.map */

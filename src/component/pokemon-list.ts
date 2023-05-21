@@ -97,7 +97,7 @@ export class PokemonList extends Component {
         (item) =>
           `
           <li>
-            <p>${item.name.toUpperCase()}</p><span>Index #${item.id}</span>
+            <p>${item.name.toUpperCase()}</p><span>Index # ${item.id}</span>
             <img src="${
               item.imgUrl
             }" width="170" height="150" class="poke-info">

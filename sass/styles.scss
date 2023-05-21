@@ -8,6 +8,7 @@
   align-items: center;
   text-align: center;
   margin: 30px;
+  font-weight: bold;
 
   header {
     h1 {
@@ -89,5 +90,8 @@
         }
       }
     }
+  }
+  footer {
+    margin-top: 35px;
   }
 }
