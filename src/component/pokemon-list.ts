@@ -154,9 +154,9 @@ export class PokemonList extends Component {
             item.size.height
           } cm</span>
                   <span>Hp: ${item.stats.hp}</span>
-                  <span>Attack ${item.stats.attack}</span>
-                  <span>defense ${item.stats.defense}</span>
-                  <span>Speed ${item.stats.speed}</span>
+                  <span>Attack: ${item.stats.attack}</span>
+                  <span>defense: ${item.stats.defense}</span>
+                  <span>Speed: ${item.stats.speed}</span>
                 </div>
               </div>
 
