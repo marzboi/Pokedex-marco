@@ -17,11 +17,10 @@ export class PokeApi {
   async getPokemon(url: PokemonInfo['url']) {
     const response = await fetch(url);
     const search = await response.json();
-    console.log(search);
     const pokemon: Pokemon = {
       id: search.id,
       name: search.name,
-      imgUrl: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${search.id}.gif`,
+      imgUrl: search.sprites.front_default,
       size: { weight: search.weight, height: search.height },
       stats: {
         hp: search.stats[0].base_stat,
@@ -30,6 +29,10 @@ export class PokeApi {
         specialA: search.stats[3].base_stat,
         specialD: search.stats[4].base_stat,
         speed: search.stats[5].base_stat,
+      },
+      type: {
+        mainType: search.types[0]?.type?.name || null,
+        secondaryType: search.types[1]?.type?.name || null,
       },
     };
     return pokemon;

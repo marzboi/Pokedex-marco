@@ -8,6 +8,7 @@ export class PokemonList extends Component {
   pokeRepo: PokeApi;
   itemsPerPage: number;
   offset: number;
+  pokemonArrayInfo!: object[];
 
   constructor(selector: string) {
     super(selector);
@@ -24,10 +25,32 @@ export class PokemonList extends Component {
   async render(): Promise<void> {
     super.cleanHtml();
     this.template = await this.createTemplate();
+    this.pokemonArrayInfo = await this.createPokemonInfo();
     super.render();
-    document.querySelectorAll('.poke-info').forEach((item) => {
-      item.addEventListener('click', () => console.log(true));
+    this.element.querySelectorAll('.poke-info').forEach((item) => {
+      item.addEventListener('click', this.handleShowMoreInfo.bind(this));
     });
+    this.element.querySelectorAll('.fa-circle-xmark').forEach((item) => {
+      item.addEventListener('click', this.handleCloseMoreInfo.bind(this));
+    });
+  }
+
+  async handleShowMoreInfo(event: Event) {
+    const clickedImage = event.target as HTMLImageElement;
+    const listItem = clickedImage.closest('li');
+    const hiddenElement = listItem?.querySelector('.poke-details');
+    if (hiddenElement) {
+      hiddenElement.classList.remove('hidden');
+    }
+  }
+
+  async handleCloseMoreInfo(event: Event) {
+    const closingMark = event.target as HTMLImageElement;
+    const listItem = closingMark.closest('li');
+    const hiddenElement = listItem?.querySelector('.poke-details');
+    if (hiddenElement) {
+      hiddenElement.classList.add('hidden');
+    }
   }
 
   async handleEventListeners() {
@@ -57,7 +80,7 @@ export class PokemonList extends Component {
   }
 
   async handleNextButton() {
-    if (this.offset >= 1281) this.offset = 1261;
+    if (this.offset >= 1281) this.offset = 1280;
     this.offset = this.itemsPerPage + this.offset;
     this.handleLoad();
   }
@@ -83,6 +106,16 @@ export class PokemonList extends Component {
     return this.pokeRepo.getPokemon(url);
   }
 
+  async createPokemonInfo() {
+    const promiseArray: Promise<Pokemon>[] = [];
+
+    this.pokemons.forEach((element) => {
+      promiseArray.push(this.handleGetOnePokemonInfo(element.url));
+    });
+
+    return Promise.all(promiseArray);
+  }
+
   async createTemplate() {
     const promiseArray: Promise<Pokemon>[] = [];
 
@@ -97,12 +130,36 @@ export class PokemonList extends Component {
         (item) =>
           `
           <li>
+          <div>
             <p>${item.name.toUpperCase()}</p><span>Index # ${item.id}</span>
-            <img src="${
-              item.imgUrl
-            }" width="170" height="150" class="poke-info">
-            <span>Combat Info</span>
-            
+            <div>
+            <img src="${item.imgUrl}" class="poke-info">
+            </div>
+            <span>Type I: ${item.type.mainType}</span>
+            <span>Type II: ${
+              item.type.secondaryType
+                ? item.type.secondaryType
+                : item.type.mainType
+            }</span>
+            </div>
+              <div class="poke-details hidden">
+              <div>
+                <i class="fa-sharp fa-regular fa-circle-xmark"></i>
+              </div>
+                <img src="${item.imgUrl}">
+                <div>
+                  <span>Index: ${item.id}</span>
+                  <span>Name: ${item.id}</span>
+                  <span>Size: ${item.size.weight} Kg, ${
+            item.size.height
+          } cm</span>
+                  <span>Hp: ${item.stats.hp}</span>
+                  <span>Attack ${item.stats.attack}</span>
+                  <span>defense ${item.stats.defense}</span>
+                  <span>Speed ${item.stats.speed}</span>
+                </div>
+              </div>
+
           </li>
           `
       )
@@ -110,7 +167,6 @@ export class PokemonList extends Component {
 
     return `
       <section class="pokemon-list">
-      <h2>Pokedex</h2>
         <ul>${pokeList}</ul>
       </section>
     `;
