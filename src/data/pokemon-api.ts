@@ -17,7 +17,6 @@ export class PokeApi {
   async getPokemon(url: PokemonInfo['url']) {
     const response = await fetch(url);
     const search = await response.json();
-    console.log(search);
     const pokemon: Pokemon = {
       id: search.id,
       name: search.name,
@@ -31,7 +30,12 @@ export class PokeApi {
         specialD: search.stats[4].base_stat,
         speed: search.stats[5].base_stat,
       },
+      type: {
+        mainType: search.types[0]?.type?.name || null,
+        secondaryType: search.types[1]?.type?.name || null,
+      },
     };
+    console.log(pokemon);
     return pokemon;
   }
 }

@@ -16,4 +16,8 @@ export type Pokemon = {
     specialD: number;
     speed: number;
   };
+  type: {
+    mainType: string;
+    secondaryType: string;
+  };
 };
