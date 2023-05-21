@@ -31,7 +31,6 @@ export class PokeApi {
         speed: search.stats[5].base_stat,
       },
     };
-
     return pokemon;
   }
 }

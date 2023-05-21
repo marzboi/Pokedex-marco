@@ -17,6 +17,7 @@ export class PokemonList extends Component {
     this.offset = 0;
     // eslint-disable-next-line no-new
     new Navigation('main');
+    this.handleEventListeners();
     this.handleLoad();
   }
 
@@ -24,6 +25,12 @@ export class PokemonList extends Component {
     super.cleanHtml();
     this.template = await this.createTemplate();
     super.render();
+    document.querySelectorAll('.poke-info').forEach((item) => {
+      item.addEventListener('click', () => console.log(true));
+    });
+  }
+
+  async handleEventListeners() {
     document
       .querySelector('#poke-items')!
       .addEventListener('change', (event) => {
@@ -41,6 +48,7 @@ export class PokemonList extends Component {
   }
 
   async handleNextButton() {
+    if (this.offset >= 1281) this.offset = 1261;
     this.offset = this.itemsPerPage + this.offset;
     this.handleLoad();
   }
@@ -79,9 +87,12 @@ export class PokemonList extends Component {
         (item) =>
           `
           <li>
-            <p>${item.name}</p>
-            <img src="${item.imgUrl}" width="170" height="150">
+            <p>${item.name.toUpperCase()}</p><span>Index #${item.id}</span>
+            <img src="${
+              item.imgUrl
+            }" width="170" height="150" class="poke-info">
             <span>Combat Info</span>
+            
           </li>
           `
       )
