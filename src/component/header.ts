@@ -14,7 +14,7 @@ export class Header extends Component {
     <header>
       <h1>ISDI Pokedex</h1>
       <h2>Search, Read and Save your favorite pokemons</h2>
-      <img src="./pokemon-logo.svg" alt="The Pokemon logo">
+      <img src="./pokemon-logo.svg"  alt="The Pokemon logo" width="250" height="100">
     </header>
     `;
   }
