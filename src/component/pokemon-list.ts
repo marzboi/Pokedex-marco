@@ -150,7 +150,6 @@ export class PokemonList extends Component {
                 <img src="${item.imgUrl}">
                 <div>
                   <span>Index: ${item.id}</span>
-                  <span>Name: ${item.id}</span>
                   <span>Size: ${item.size.weight} Kg, ${
             item.size.height
           } cm</span>

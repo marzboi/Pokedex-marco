@@ -248,6 +248,10 @@ body {
 }
 #app main .pokemon-list ul li .poke-details i {
   font-size: 40px;
+  cursor: pointer;
+}
+#app main .pokemon-list ul li .poke-details i:hover {
+  color: gray;
 }
 #app main .pokemon-list ul li .poke-details img {
   background-color: white;

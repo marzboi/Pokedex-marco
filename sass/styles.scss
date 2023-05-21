@@ -100,6 +100,10 @@
             }
             i {
               font-size: 40px;
+              cursor: pointer;
+            }
+            i:hover {
+              color: gray;
             }
             img {
               background-color: white;
