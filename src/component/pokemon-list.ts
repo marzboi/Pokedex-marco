@@ -55,9 +55,7 @@ export class PokemonList extends Component {
 
   async handlePrevButton() {
     if (this.offset === 0) return;
-    if (this.itemsPerPage === 20) this.offset -= 20;
-    if (this.itemsPerPage === 40) this.offset -= 40;
-    if (this.itemsPerPage === 60) this.offset -= 60;
+    this.offset -= this.itemsPerPage;
     if (this.offset < 0) this.offset = 0;
     this.handleLoad();
   }
