@@ -1,6 +1,7 @@
 import { PokeApi } from '../data/pokemon-api';
 import { Pokemon, PokemonInfo } from '../models/pokemon';
 import { Component } from './component';
+import { Navigation } from './navigation';
 
 export class PokemonList extends Component {
   pokemons: PokemonInfo[];
@@ -14,6 +15,8 @@ export class PokemonList extends Component {
     this.pokeRepo = new PokeApi();
     this.itemsPerPage = 20;
     this.offset = 0;
+    // eslint-disable-next-line no-new
+    new Navigation('main');
     this.handleLoad();
   }
 
@@ -21,11 +24,6 @@ export class PokemonList extends Component {
     super.cleanHtml();
     this.template = await this.createTemplate();
     super.render();
-    this.element
-      .querySelectorAll('img')
-      .forEach((item) =>
-        item.addEventListener('click', this.displayPokemon.bind(this))
-      );
     document
       .querySelector('#poke-items')!
       .addEventListener('change', (event) => {
@@ -37,10 +35,6 @@ export class PokemonList extends Component {
   async handleDisplayPokemon(selectedValue: string) {
     this.itemsPerPage = Number(selectedValue);
     this.handleLoad();
-  }
-
-  async displayPokemon() {
-    console.log(true);
   }
 
   async handleLoad() {
@@ -75,19 +69,6 @@ export class PokemonList extends Component {
       .join('');
 
     return `
-      <section class="list-generator">
-        <ul></ul>
-        <div>
-          <label for="poke-items">Pokemons per page
-            <select name="poke" id="poke-items">
-              <option value="20">20</option>
-              <option value="50">50</option>
-              <option value="100">100</option>
-              <option value="150">150</option>
-            </select>
-          </label>
-        </div>
-      </section>
       <section class="pokemon-list">
       <h2>Pokedex</h2>
         <ul>${pokeList}</ul>
