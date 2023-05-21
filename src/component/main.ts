@@ -10,8 +10,7 @@ export class Main extends Component {
 
   createTemplate() {
     return `
-    <main>
-      
+    <main>  
     </main>
     `;
   }
