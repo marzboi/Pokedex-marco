@@ -178,6 +178,7 @@ body {
   padding: 20px;
 }
 #app main .list-generator ul li button {
+  font-size: 1rem;
   font-family: inherit;
   padding: 10px;
   border-radius: 6px;
@@ -201,25 +202,48 @@ body {
   grid-template-columns: repeat(5, 1fr);
 }
 #app main .pokemon-list ul li {
-  display: flex;
-  flex-direction: column;
-  margin: 10px;
+  color: white;
+  padding: 10px;
+  margin: 12px;
   align-items: center;
   border-radius: 10px;
-  justify-content: space-between;
-  background: url("https://cutewallpaper.org/21/pokemon-pokedex-background/pokemon-pokemon-pokedex-wallpaper-wallpapers-fondo.jpg");
+  background: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2fb2821a-1406-4a1d-9b04-6668f278e944/d8c8vec-f5fe878b-b71f-42d5-b392-80f813feb639.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzJmYjI4MjFhLTE0MDYtNGExZC05YjA0LTY2NjhmMjc4ZTk0NFwvZDhjOHZlYy1mNWZlODc4Yi1iNzFmLTQyZDUtYjM5Mi04MGY4MTNmZWI2MzkucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.iJZ_gcH8TU_Xv-X4ishMNchye76Sb4DbSz9kctTHksU");
 }
-#app main .pokemon-list ul li span {
+#app main .pokemon-list ul li div {
+  display: flex;
+  flex-direction: column;
+}
+#app main .pokemon-list ul li div span {
   padding: 10px;
 }
-#app main .pokemon-list ul li img {
-  padding: 20px;
-}
-#app main .pokemon-list ul li p {
+#app main .pokemon-list ul li div p {
+  color: black;
   margin: 25px;
   border-radius: 15%;
   padding: 5px;
   background-color: white;
+}
+#app main .pokemon-list ul li .hidden {
+  display: none;
+}
+#app main .pokemon-list ul li .poke-details {
+  color: white;
+  font-size: 1.0625rem;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: red;
+  border: 5px solid black;
+  padding: 20px;
+  z-index: 1;
+}
+#app main .pokemon-list ul li .poke-details i {
+  font-size: 40px;
+}
+#app main .pokemon-list ul li .poke-details img {
+  background-color: white;
+  margin: 15px;
 }
 #app footer {
   margin-top: 35px;

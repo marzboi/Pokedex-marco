@@ -28,8 +28,17 @@ export class PokemonList extends Component {
     this.pokemonArrayInfo = await this.createPokemonInfo();
     super.render();
     document.querySelectorAll('.poke-info').forEach((item) => {
-      item.addEventListener('click', () => console.log(true));
+      item.addEventListener('click', this.handleShowMoreInfo.bind(this));
     });
+  }
+
+  async handleShowMoreInfo(event: Event) {
+    const clickedImage = event.target as HTMLImageElement;
+    const listItem = clickedImage.closest('li');
+    const hiddenElement = listItem?.querySelector('.poke-details');
+    if (hiddenElement) {
+      hiddenElement.classList.remove('hidden');
+    }
   }
 
   async handleEventListeners() {
@@ -109,15 +118,36 @@ export class PokemonList extends Component {
         (item) =>
           `
           <li>
+          <div>
             <p>${item.name.toUpperCase()}</p><span>Index # ${item.id}</span>
+            <div>
             <img src="${item.imgUrl}" class="poke-info">
+            </div>
             <span>Type I: ${item.type.mainType}</span>
             <span>Type II: ${
               item.type.secondaryType
                 ? item.type.secondaryType
                 : item.type.mainType
             }</span>
-            
+            </div>
+              <div class="poke-details hidden">
+              <div>
+                <i class="fa-sharp fa-regular fa-circle-xmark"></i>
+              </div>
+                <img src="${item.imgUrl}">
+                <div>
+                  <span>Index: ${item.id}</span>
+                  <span>Name: ${item.id}</span>
+                  <span>Size: ${item.size.weight} Kg, ${
+            item.size.height
+          } cm</span>
+                  <span>Hp: ${item.stats.hp}</span>
+                  <span>Attack ${item.stats.attack}</span>
+                  <span>defense ${item.stats.defense}</span>
+                  <span>Speed ${item.stats.speed}</span>
+                </div>
+              </div>
+
           </li>
           `
       )
@@ -125,7 +155,6 @@ export class PokemonList extends Component {
 
     return `
       <section class="pokemon-list">
-      <h2>Pokedex</h2>
         <ul>${pokeList}</ul>
       </section>
     `;
