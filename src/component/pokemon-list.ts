@@ -27,8 +27,11 @@ export class PokemonList extends Component {
     this.template = await this.createTemplate();
     this.pokemonArrayInfo = await this.createPokemonInfo();
     super.render();
-    document.querySelectorAll('.poke-info').forEach((item) => {
+    this.element.querySelectorAll('.poke-info').forEach((item) => {
       item.addEventListener('click', this.handleShowMoreInfo.bind(this));
+    });
+    this.element.querySelectorAll('.fa-circle-xmark').forEach((item) => {
+      item.addEventListener('click', this.handleCloseMoreInfo.bind(this));
     });
   }
 
@@ -38,6 +41,15 @@ export class PokemonList extends Component {
     const hiddenElement = listItem?.querySelector('.poke-details');
     if (hiddenElement) {
       hiddenElement.classList.remove('hidden');
+    }
+  }
+
+  async handleCloseMoreInfo(event: Event) {
+    const closingMark = event.target as HTMLImageElement;
+    const listItem = closingMark.closest('li');
+    const hiddenElement = listItem?.querySelector('.poke-details');
+    if (hiddenElement) {
+      hiddenElement.classList.add('hidden');
     }
   }
 
