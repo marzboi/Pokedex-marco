@@ -24,34 +24,64 @@
   }
 
   main {
-    h2 {
-      font-size: 30px;
-      margin-bottom: 30px;
-    }
-    ul {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-
-      li {
+    .list-generator {
+      margin: 25px;
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: space-evenly;
+      ul {
         display: flex;
-        flex-direction: column;
-        margin: 10px;
+        li {
+          padding: 20px;
+          button {
+            font-family: inherit;
+            padding: 10px;
+            border-radius: 6px;
+          }
+        }
+      }
+      div {
+        display: flex;
         align-items: center;
-        border: solid black 2px;
-        border-radius: 10px;
-        justify-content: space-between;
 
-        span {
-          padding: 40px;
+        label {
+          select {
+            padding: 5px;
+            font-family: inherit;
+          }
         }
+      }
+    }
+    .pokemon-list {
+      h2 {
+        font-size: 30px;
+        margin-bottom: 30px;
+      }
+      ul {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
 
-        a {
-          text-decoration: none;
-          color: black;
-        }
+        li {
+          display: flex;
+          flex-direction: column;
+          margin: 10px;
+          align-items: center;
+          border: solid black 2px;
+          border-radius: 10px;
+          justify-content: space-between;
 
-        p {
-          padding: 40px;
+          span {
+            padding: 40px;
+          }
+
+          a {
+            text-decoration: none;
+            color: black;
+          }
+
+          p {
+            padding: 40px;
+          }
         }
       }
     }

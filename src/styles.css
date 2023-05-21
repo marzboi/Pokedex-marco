@@ -164,15 +164,40 @@ body {
 #app header img {
   margin: 50px;
 }
-#app main h2 {
+#app main .list-generator {
+  margin: 25px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-evenly;
+}
+#app main .list-generator ul {
+  display: flex;
+}
+#app main .list-generator ul li {
+  padding: 20px;
+}
+#app main .list-generator ul li button {
+  font-family: inherit;
+  padding: 10px;
+  border-radius: 6px;
+}
+#app main .list-generator div {
+  display: flex;
+  align-items: center;
+}
+#app main .list-generator div label select {
+  padding: 5px;
+  font-family: inherit;
+}
+#app main .pokemon-list h2 {
   font-size: 30px;
   margin-bottom: 30px;
 }
-#app main ul {
+#app main .pokemon-list ul {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
 }
-#app main ul li {
+#app main .pokemon-list ul li {
   display: flex;
   flex-direction: column;
   margin: 10px;
@@ -181,14 +206,14 @@ body {
   border-radius: 10px;
   justify-content: space-between;
 }
-#app main ul li span {
+#app main .pokemon-list ul li span {
   padding: 40px;
 }
-#app main ul li a {
+#app main .pokemon-list ul li a {
   text-decoration: none;
   color: black;
 }
-#app main ul li p {
+#app main .pokemon-list ul li p {
   padding: 40px;
 }
 
