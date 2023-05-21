@@ -14,7 +14,7 @@ export class PokemonList extends Component {
     this.pokeRepo = new PokeApi();
     this.itemsPerPage = 20;
     this.offset = 0;
-    this.handleLoad(this.itemsPerPage, this.offset);
+    this.handleLoad();
   }
 
   async render(): Promise<void> {
@@ -26,18 +26,25 @@ export class PokemonList extends Component {
       .forEach((item) =>
         item.addEventListener('click', this.displayPokemon.bind(this))
       );
+    document
+      .querySelector('#poke-items')!
+      .addEventListener('change', (event) => {
+        const selectedValue = (event.target as HTMLSelectElement).value;
+        this.handleDisplayPokemon(selectedValue);
+      });
+  }
+
+  async handleDisplayPokemon(selectedValue: string) {
+    this.itemsPerPage = Number(selectedValue);
+    this.handleLoad();
   }
 
   async displayPokemon() {
     console.log(true);
   }
 
-  async handleDisplayPokemon(selectedValue: string) {
-    console.log('Selected value:', selectedValue);
-  }
-
-  async handleLoad(limit: number, offset: number) {
-    this.pokemons = await this.pokeRepo.getAll(limit, offset);
+  async handleLoad() {
+    this.pokemons = await this.pokeRepo.getAll(this.itemsPerPage, this.offset);
     this.render();
   }
 
@@ -68,7 +75,7 @@ export class PokemonList extends Component {
       .join('');
 
     return `
-      <section>
+      <section class="list-generator">
         <ul></ul>
         <div>
           <label for="poke-items">Pokemons per page
@@ -81,8 +88,8 @@ export class PokemonList extends Component {
           </label>
         </div>
       </section>
-      <h2>Pokedex</h2>
       <section class="pokemon-list">
+      <h2>Pokedex</h2>
         <ul>${pokeList}</ul>
       </section>
     `;
