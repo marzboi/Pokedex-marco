@@ -11,8 +11,8 @@ export class Navigation extends Component {
     return `
       <section class="list-generator">
         <ul class="nav-buttons">
-          <li><button>Previous</button></li>
-          <li><button>Next</button></li>
+          <li><button class="prev">Previous</button></li>
+          <li><button class="next">Next</button></li>
         </ul>
         <div>
           <label for="poke-items">Pokemons per page
