@@ -30,6 +30,25 @@ export class PokemonList extends Component {
         const selectedValue = (event.target as HTMLSelectElement).value;
         this.handleDisplayPokemon(selectedValue);
       });
+
+    document
+      .querySelector('.next')
+      ?.addEventListener('click', this.handleNextButton.bind(this));
+
+    document
+      .querySelector('.prev')
+      ?.addEventListener('click', this.handlePrevButton.bind(this));
+  }
+
+  async handleNextButton() {
+    this.offset = this.itemsPerPage + this.offset;
+    this.handleLoad();
+  }
+
+  async handlePrevButton() {
+    if (this.offset === 0) return;
+    this.offset = this.itemsPerPage - this.offset;
+    this.handleLoad();
   }
 
   async handleDisplayPokemon(selectedValue: string) {

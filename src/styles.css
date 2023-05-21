@@ -180,6 +180,7 @@ body {
   font-family: inherit;
   padding: 10px;
   border-radius: 6px;
+  cursor: pointer;
 }
 #app main .list-generator div {
   display: flex;
@@ -188,6 +189,7 @@ body {
 #app main .list-generator div label select {
   padding: 5px;
   font-family: inherit;
+  cursor: pointer;
 }
 #app main .pokemon-list h2 {
   font-size: 30px;
