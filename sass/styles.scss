@@ -8,6 +8,7 @@
   align-items: center;
   text-align: center;
   margin: 30px;
+  font-weight: bold;
 
   header {
     h1 {
@@ -19,7 +20,7 @@
       margin: 30px;
     }
     img {
-      margin: 50px;
+      margin: 35px;
     }
   }
 
@@ -89,5 +90,8 @@
         }
       }
     }
+  }
+  footer {
+    margin-top: 35px;
   }
 }

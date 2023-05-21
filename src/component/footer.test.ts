@@ -1,12 +1,12 @@
 /* eslint-disable no-new */
 import { screen } from '@testing-library/dom';
 import '@testing-library/jest-dom';
-import { Header } from './header';
+import { Footer } from './footer';
 
-describe('Given the component Header', () => {
+describe('Given the component Footer', () => {
   document.body.innerHTML = '<slot></slot>';
-  new Header('slot');
-  const element = screen.getByRole('banner');
+  new Footer('slot');
+  const element = screen.getByRole('contentinfo');
   describe('When It is instantiate', () => {
     test('It should be in the document', () => {
       expect(element).toBeInTheDocument();
