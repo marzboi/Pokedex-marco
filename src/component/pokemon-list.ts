@@ -45,6 +45,15 @@ export class PokemonList extends Component {
     document
       .querySelector('.prev')
       ?.addEventListener('click', this.handlePrevButton.bind(this));
+
+    document
+      .querySelector('.return')
+      ?.addEventListener('click', this.handleReturnButton.bind(this));
+  }
+
+  async handleReturnButton() {
+    this.offset = 0;
+    this.handleLoad();
   }
 
   async handleNextButton() {
@@ -55,7 +64,8 @@ export class PokemonList extends Component {
 
   async handlePrevButton() {
     if (this.offset === 0) return;
-    this.offset = this.itemsPerPage - this.offset;
+    this.offset -= this.itemsPerPage;
+    if (this.offset < 0) this.offset = 0;
     this.handleLoad();
   }
 

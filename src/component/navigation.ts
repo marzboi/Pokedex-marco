@@ -11,6 +11,7 @@ export class Navigation extends Component {
     return `
       <section class="list-generator">
         <ul class="nav-buttons">
+          <li><button class="return">Back to start</button></li>
           <li><button class="prev">Previous</button></li>
           <li><button class="next">Next</button></li>
         </ul>
