@@ -167,6 +167,9 @@ export class PokemonList extends Component {
 
     return `
       <section class="pokemon-list">
+      <p>Pokemons ( ${pokemonInformation[0].id} / ${
+      pokemonInformation[pokemonInformation.length - 1].id
+    } )</p>
         <ul>${pokeList}</ul>
       </section>
     `;
