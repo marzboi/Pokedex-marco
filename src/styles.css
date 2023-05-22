@@ -216,6 +216,9 @@ body {
 #app main .pokemon-list ul li div span {
   padding: 10px;
 }
+#app main .pokemon-list ul li div img {
+  cursor: pointer;
+}
 #app main .pokemon-list ul li div p {
   color: black;
   margin: 25px;
