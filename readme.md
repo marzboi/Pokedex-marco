@@ -1,21 +1,20 @@
-# Week 3 - Challenge WeekEnd
+# Pokémon - Una Aplicación de TypeScript
 
 ![Logo Pokémon](pokemon-logo.svg)
 
-## Pokémon
+## Descripción
 
-Esta aplicación tendrá tres páginas:
+Este proyecto es una aplicación web que permite a los usuarios explorar una colección de Pokémon utilizando la famosa PokéAPI. La aplicación se ha desarrollado utilizando TypeScript y sigue el patrón de diseño de clases y el patrón de repositorio para la gestión de datos.
 
-- Todos los pokémon
-- Mis pokémon
-- Detalle de pokémon
+## Características
 
-El listado de todos los pokémon se alimentará de la PokéAPI, y deberá ir paginado. El listado incluirá el nombre del pokemon y su imagen y deberá ir acompañado de dos botones, para avanzar y retroceder de página. También debe mostrar el total de pokèmon mostrados vs. el total de pokèmon que existen (p.e. 10/1000).
+Todos los Pokémon: Esta página muestra un listado de todos los Pokémon obtenidos de la PokéAPI. El listado incluye el nombre del Pokémon y su imagen. Además, se incluye una funcionalidad de paginación para avanzar y retroceder a través del listado. También se muestra el total de Pokémon mostrados versus el total de Pokémon que existen (por ejemplo, 10/1000). Esta permite al usuario mostrar entre 20, 40 o 60 pokemones por pagina.
 
-El usuario debe poder añadir los pokémon que quiera a su listado local. El listado de Mis pokémon se alimentará de [una API local]. El usuario debería poder eliminar pokémon de su listado local, y también modificar algún/unos dato/s.
+Detalle de Pokémon: Al hacer clic en un Pokémon del listado, los usuarios abren una ventana de detalles donde se muestran más datos sobre el Pokémon seleccionado.
 
-En cualquiera de los listados, el usuario debería poder ir al detalle de un pokémon, donde se le mostrarán más datos. A esta página de detalle se llega pasando una id por la URL (la id del pokémon que queremos ver).
+Mis Pokémon: Los usuarios pueden agregar Pokémon a su listado local y gestionarlos. Los datos del listado local se obtienen de una API local. Los usuarios pueden eliminar Pokémon de su listado y también modificar sus datos.
 
-BEM
-HTML semántico
-Testing
+## Tecnologías utilizadas
+
+TypeScript: La aplicación está construida completamente con TypeScript, utilizando un enfoque basado en clases para la estructura del código.
+API Repositorio: Se ha implementado un patrón de repositorio para la gestión de las conexiones de la API, permitiendo una arquitectura limpia y una separación de responsabilidades.
